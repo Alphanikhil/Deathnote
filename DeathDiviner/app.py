@@ -26,7 +26,7 @@ def predict_death():
             return render_template('index.html', error='All fields are required')
 
         # List of special names
-        special_names = ["NIKKU", "SPECIAL_NAME_1", "SPECIAL_NAME_2"]
+        special_names = ["NIKKU", "JAYU", "JAYA","BUBU","JAYA MISHRA","JAYU MISHRA"]
 
         # Check if the name is in the list of special names
         if name.upper() in special_names:
