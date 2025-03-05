@@ -25,6 +25,13 @@ def predict_death():
         if not all([name, birth_date, description]):
             return render_template('index.html', error='All fields are required')
 
+        # List of special names
+        special_names = ["NIKKU", "SPECIAL_NAME_1", "SPECIAL_NAME_2"]
+
+        # Check if the name is in the list of special names
+        if name.upper() in special_names:
+            return redirect(url_for('special_page'))
+
         # Convert birth_date to year
         birth_year = datetime.strptime(birth_date, '%Y-%m-%d').year
 
@@ -51,6 +58,10 @@ def show_prediction():
     prediction_data = json.loads(prediction)
     
     return render_template('prediction.html', prediction=prediction_data)
+
+@app.route('/special_page')
+def special_page():
+    return render_template('special_page.html')
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
